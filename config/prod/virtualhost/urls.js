@@ -1,0 +1,1 @@
+let apiUrl = "http://fernangus.api.chickenkiller.com:8081";

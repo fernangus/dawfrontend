@@ -1,0 +1,12 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: fernangus-films
+    volumes:
+      - ./app:/var/www/html/app
+      - ./config/dev/virtualhost/fernangus-films.dev.com.conf:/etc/apache2/sites-enabled/fernangus-films.dev.com.conf
+      - ./config/dev/virtualhost/urls.js:/var/www/html/app/public_html/config/urls.js
+    ports:
+      - "8081:80"

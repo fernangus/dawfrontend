@@ -1,0 +1,1 @@
+let apiUrl = "http://fernangus.api.dev.com:8080";
