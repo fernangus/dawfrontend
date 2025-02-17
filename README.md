@@ -1,25 +1,25 @@
-# Despliegue del Frontend de Fernangus
+# Proyecto Frontend - Fernangus
 
-## Desarrollo
-Para levantar el entorno de desarrollo:
-```sh
-docker-compose -f docker-compose-dev.yml up -d --build
+## Despliegue en Desarrollo
+1. Clonar el repositorio.
+2. Ejecutar:
 
-Accede en el navegador a:
+docker-compose -f docker-compose-dev.yml up -d
 
-http://localhost:8081
+- para recrear contenedores ya creados se puede utilizar el comando adicional --force-recreate -
 
-Para parar el contenedor:
+3. Configurar host, ip local apuntando a fernangus-films.dev.com.
 
-docker-compose -f docker-compose-dev.yml down
+4. Acceder a `http://fernangus-films.dev.com:8081`.
 
-## Producción
+## Despliegue en Producción
+1. Configurar el dominio en FreeDNS.
+2. Crear el archivo `.env` en la raíz.
+4. Ejecutar:
 
-Para levantar el entorno de producción:
+docker-compose up -d
 
-docker-compose up -d --build
-
-Accede en el navegador a:
+5. Acceder a:
 
 http://fernangus-films.chickenkiller.com
 
@@ -27,18 +27,8 @@ o
 
 http://fernangus-films.mooo.com
 
-Para parar el contenedor:
-
-docker-compose down
-
-
----
-
-## **12. Explicación rápida**
-- **`Dockerfile.dev`** y **`Dockerfile`**: construyen la imagen con Apache y módulos necesarios.
-- **`docker-compose-dev.yml`**: usa `Dockerfile.dev` y configura entorno de desarrollo.
-- **`docker-compose.yml`**: usa `Dockerfile` y configura entorno de producción.
-- **VirtualHosts**: Diferencian entre producción (`chickenkiller.com`, `mooo.com`) y desarrollo (`fernangus-films.dev.com`).
-- **`urls.js`**: Configura la URL del backend según el entorno.
-- **`.gitignore`**: Evita subir archivos de configuración sensibles.
-- **`README.md`**: Explica cómo desplegar los entornos.
+## Comandos útiles
+- docker-compose down → Detener contenedores.
+- docker-compose down -v --rmi all → Detener contenedores -v para eliminar volumenes, --rmi all para eliminar imagenes asociadas.
+- docker-compose ps → Ver estado.
+- docker-compose logs → Arrancar logs de nuestros contenedores.
